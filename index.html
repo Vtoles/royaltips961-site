@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Royal Tips 961 — Verified Track Record</title>
+    <meta name="description" content="Verified, transparent betting track record for @royaltips961. Discipline over hype. Tracked. Transparent.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700;800&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #000000; --card: #0B0A09; --card-2: #0c0b09; --border: #2a2620;
+        --gold: #D4A04F; --gold-bright: #E8B86A; --gold-deep: #8C6232;
+        --red: #E63946; --white: #FFFFFF; --white-2: #E8E4DD;
+        --muted: #8E8478; --muted-2: #6B6258;
+        --win: #7AB889; --loss: #B86A5A;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        background: var(--bg); color: var(--white-2);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 15px; line-height: 1.45; letter-spacing: .1px;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+        padding: 0 14px 40px; display: flex; flex-direction: column; align-items: center;
+        font-variant-numeric: tabular-nums;
+      }
+      .page { width: 100%; max-width: 460px; }
+
+      /* Wordmark */
+      .wm {
+        font-family: 'Archivo Black', sans-serif; font-style: italic;
+        font-size: 30px; letter-spacing: -.5px; line-height: 1; white-space: nowrap;
+      }
+      .wm-royal { color: var(--white); } .wm-tips { color: var(--gold-bright); } .wm-961 { color: var(--red); }
+
+      /* Header */
+      .header { text-align: center; padding: 30px 0 18px; }
+      .header__title {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 4px; font-size: 14px;
+        color: var(--white); margin-top: 14px;
+      }
+      .rule {
+        height: 2px; width: 100%; margin: 16px 0 14px;
+        background: linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold-bright) 50%, var(--gold) 82%, transparent);
+      }
+      .tagline {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 1.6px; font-size: 12px; color: var(--gold);
+      }
+      .header__meta, .footer__meta {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 1.2px; font-size: 10.5px;
+        color: var(--muted); margin-top: 10px;
+      }
+
+      /* Cards */
+      .card {
+        background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+        padding: 22px 22px 20px; margin-top: 16px;
+      }
+      .card--picks { border-top: 3px solid var(--gold); }
+      .card--parlays { background: var(--card-2); border-color: #211e19; }
+      .card__eyebrow {
+        display: flex; justify-content: space-between; align-items: baseline;
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+      }
+      .card__tier { color: var(--gold-bright); letter-spacing: 2.5px; font-size: 14px; }
+      .card--parlays .card__tier { color: var(--muted); }
+      .card__tier-meta { color: var(--muted); letter-spacing: 1.5px; font-size: 10.5px; }
+      .card__record {
+        font-family: 'Archivo Black', sans-serif; line-height: 1; margin: 14px 0 6px;
+        display: flex; align-items: baseline; gap: 2px;
+      }
+      .rec { font-size: 64px; }
+      .rec--w { color: var(--white); } .rec--l { color: var(--muted); }
+      .rec__sep { font-size: 44px; color: var(--gold-deep); margin: 0 6px; }
+      .card__stats { display: flex; gap: 10px; margin-top: 12px; }
+      .stat { flex: 1; min-width: 0; }
+      .stat__num {
+        font-family: 'Archivo Black', sans-serif; font-size: 26px; line-height: 1.05;
+        color: var(--white); white-space: nowrap;
+      }
+      .stat--sm .stat__num { font-size: 22px; }
+      .dollar-strip {
+        display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+        margin-top: 16px; padding-top: 14px; border-top: 1px solid #1a1714;
+      }
+      .dollar-strip__label {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 1.2px; font-size: 11px; color: var(--muted);
+      }
+      .dollar-strip__val { font-family: 'Archivo Black', sans-serif; font-size: 24px; line-height: 1; white-space: nowrap; }
+      .stat__label {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 1.2px; font-size: 10px; color: var(--muted); margin-top: 5px;
+      }
+      .is-pos { color: var(--win) !important; } .is-neg { color: var(--loss) !important; } .is-flat { color: var(--white) !important; }
+      .card__note {
+        font-size: 11.5px; color: var(--muted); line-height: 1.4; margin-top: 14px;
+        border-top: 1px solid #1a1714; padding-top: 12px;
+      }
+      .muted { color: var(--muted-2); font-weight: 600; }
+
+      /* Bet log */
+      .log { margin-top: 28px; position: relative; }
+      .eyebrow {
+        display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 3px; font-size: 13px; color: var(--gold-bright);
+      }
+      .eyebrow__rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-deep), transparent); }
+
+      /* Tabbed log toggle — CSS-only, zero JS */
+      .tab-input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .tab-bar { display: flex; gap: 22px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+      .tab {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 2.5px; font-size: 15px; color: var(--muted); cursor: pointer;
+        padding: 4px 2px 11px; margin-bottom: -1px; border-bottom: 2px solid transparent;
+        transition: color .15s ease;
+      }
+      .tab:hover { color: var(--white-2); }
+      #tab-picks:checked ~ .tab-bar label[for="tab-picks"],
+      #tab-parlays:checked ~ .tab-bar label[for="tab-parlays"] { color: var(--gold-bright); border-bottom-color: var(--gold); }
+      .tab-panel { display: none; }
+      #tab-picks:checked ~ .panel-picks { display: block; }
+      #tab-parlays:checked ~ .panel-parlays { display: block; }
+      .panel-empty { color: var(--muted); padding: 28px 4px; text-align: center; }
+
+      .row {
+        background: var(--card); border: 1px solid var(--border); border-radius: 11px;
+        padding: 13px 15px; margin-bottom: 9px;
+      }
+      .row__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+      .row__date {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.5px; font-size: 11px; color: var(--muted);
+      }
+      .row__match { font-weight: 700; color: var(--white); font-size: 14.5px; }
+      .row__detail { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 3px; }
+      .row__pm { color: var(--muted); font-size: 12.5px; }
+      .row__odds {
+        font-family: 'Inter', sans-serif; font-weight: 800; color: var(--gold-bright);
+        font-size: 15px; white-space: nowrap;
+      }
+      .row__odds--combined { color: var(--gold-bright); font-size: 16px; }
+
+      /* Badges */
+      .badge {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.2px; font-size: 10.5px; padding: 3px 9px; border-radius: 5px; white-space: nowrap;
+      }
+      .badge--won { background: rgba(122,184,137,.16); color: var(--win); border: 1px solid rgba(122,184,137,.4); }
+      .badge--lost { background: rgba(230,57,70,.13); color: var(--red); border: 1px solid rgba(230,57,70,.4); }
+      .badge--pending { background: rgba(142,132,120,.13); color: var(--muted); border: 1px solid rgba(142,132,120,.35); }
+      .badge--void { background: rgba(142,132,120,.1); color: var(--muted-2); border: 1px solid rgba(142,132,120,.3); }
+
+      /* Parlay expandable */
+      .row--parlay { padding: 0; }
+      .row__summary { padding: 13px 15px; cursor: pointer; list-style: none; }
+      .row__summary::-webkit-details-marker { display: none; }
+      .row__match--parlay { display: flex; justify-content: space-between; align-items: center; }
+      .row__label {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.5px; font-size: 15px; color: var(--white);
+      }
+      .chip {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1px; font-size: 9.5px; color: var(--gold); border: 1px solid var(--gold-deep);
+        border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle;
+      }
+      .chip--sgp { color: var(--gold-bright); border-color: var(--gold); }
+      .chevron { color: var(--gold); font-size: 14px; transition: transform .2s ease; }
+      details[open] .chevron { transform: rotate(180deg); }
+
+      .legs { padding: 0 15px 13px; border-top: 1px solid #1a1714; }
+      .leg { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0; border-bottom: 1px solid #161310; }
+      .leg:last-of-type { border-bottom: none; }
+      .tick { font-size: 15px; line-height: 1.3; flex-shrink: 0; width: 16px; text-align: center; }
+      .tick--won { color: var(--win); } .tick--lost { color: var(--loss); } .tick--pending { color: var(--muted); }
+      .leg__body { flex: 1; min-width: 0; }
+      .leg__match { color: var(--white-2); font-weight: 700; font-size: 13px; }
+      .leg__pm { color: var(--muted); font-size: 11.5px; margin-top: 1px; }
+      .leg__right { text-align: right; flex-shrink: 0; }
+      .leg__odds { font-weight: 800; color: var(--gold-bright); font-size: 13px; display: block; }
+      .leg__score { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .5px; }
+      .legs__footer {
+        display: flex; justify-content: space-between; align-items: center; padding-top: 11px; margin-top: 2px;
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
+        font-size: 11px;
+      }
+      .legs__combined { color: var(--muted); }
+      .legs__result { font-size: 13px; text-transform: none; }
+
+      .empty {
+        text-align: center; color: var(--muted); padding: 50px 20px; margin-top: 16px;
+        border: 1px dashed var(--border); border-radius: 14px;
+      }
+
+      /* Footer */
+      .footer { text-align: center; margin-top: 34px; padding-top: 22px; border-top: 1px solid #1a1714; }
+      .footer .wm { font-size: 16px; }
+      .footer__motto { color: var(--gold); font-size: 12.5px; margin-top: 10px; font-weight: 700; }
+      .footer__disc { color: var(--muted-2); font-size: 11px; line-height: 1.5; margin-top: 12px; max-width: 340px; margin-left: auto; margin-right: auto; }
+      .footer__src { color: var(--muted-2); font-size: 10px; margin-top: 14px; opacity: .8; }
+
+      /* Preview ribbon */
+      .ribbon {
+        position: sticky; top: 0; z-index: 10; width: 100%; text-align: center;
+        background: #14110E; color: var(--gold); border-bottom: 1px dashed var(--gold-deep);
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.5px; font-size: 11px; padding: 8px 12px; margin: 0 -14px 0;
+      }
+    </style>
+</head>
+<body>
+    <main class="page">
+      <header class="header">
+        <span class="wm"><span class="wm-royal">ROYAL</span> <span class="wm-tips">TIPS</span> <span class="wm-961">961</span></span>
+        <div class="header__title">VERIFIED TRACK RECORD</div>
+        <div class="rule"></div>
+        <div class="tagline">Discipline over hype · Tracked · Transparent</div>
+        <div class="header__meta">LAST UPDATED JUN 16 · 2026 · TRACKING SINCE JUN 11 · 2026</div>
+      </header>
+
+
+      <section class="card card--picks">
+        <div class="card__eyebrow"><span class="card__tier">PICKS</span><span class="card__tier-meta">PRIMARY · 12 SETTLED</span></div>
+        <div class="card__record">
+          <span class="rec rec--w">5</span><span class="rec__sep">–</span><span class="rec rec--l">7</span>
+        </div>
+        <div class="card__stats">
+          <div class="stat">
+            <div class="stat__num">41.7%</div>
+            <div class="stat__label">HIT RATE</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num is-neg">−3.03u</div>
+            <div class="stat__label">NET UNITS</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--parlays">
+        <div class="card__eyebrow"><span class="card__tier">PARLAYS</span><span class="card__tier-meta">SECONDARY</span></div>
+        <div class="card__stats">
+          <div class="stat stat--sm">
+            <div class="stat__num">0<span class="rec__sep">–</span>8</div>
+            <div class="stat__label">RECORD</div>
+          </div>
+          <div class="stat stat--sm">
+            <div class="stat__num is-neg">−8.00u</div>
+            <div class="stat__label">NET UNITS</div>
+          </div>
+        </div>
+        <div class="dollar-strip">
+          <span class="dollar-strip__label">$ RESULT <span class="muted">($10 flat per parlay)</span></span>
+          <span class="dollar-strip__val is-neg">−$80.00</span>
+        </div>
+        <p class="card__note">High-variance long shots — tracked separately so they never flatter or distort the picks record.</p>
+      </section>
+      <section class="log">
+        <input type="radio" name="logtab" id="tab-picks" class="tab-input" checked>
+        <input type="radio" name="logtab" id="tab-parlays" class="tab-input">
+        <div class="tab-bar" role="tablist">
+          <label class="tab" for="tab-picks">Picks</label>
+          <label class="tab" for="tab-parlays">Parlays</label>
+        </div>
+        <div class="tab-panel panel-picks">
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 16</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Argentina vs Algeria</div>
+        <div class="row__detail">
+          <span class="row__pm">Argentina · Money Line 3-Way</span>
+          <span class="row__odds">1.42</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 16</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Austria vs Jordan</div>
+        <div class="row__detail">
+          <span class="row__pm">Austria · Money Line 3-Way</span>
+          <span class="row__odds">1.36</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 16</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Iraq vs Norway</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 2.5 · Total Goals</span>
+          <span class="row__odds">1.61</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 15</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Belgium vs Egypt</div>
+        <div class="row__detail">
+          <span class="row__pm">Belgium · Money Line 3-Way</span>
+          <span class="row__odds">1.60</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 15</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Iran vs New Zealand</div>
+        <div class="row__detail">
+          <span class="row__pm">Iran · Money Line 3-Way</span>
+          <span class="row__odds">1.75</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 15</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Spain vs Cape Verde</div>
+        <div class="row__detail">
+          <span class="row__pm">Ferran Torres · Anytime Scorer</span>
+          <span class="row__odds">1.80</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Ivory Coast vs Ecuador</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 3.5 · Total Cards</span>
+          <span class="row__odds">1.72</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Netherlands vs Japan</div>
+        <div class="row__detail">
+          <span class="row__pm">Netherlands · Money Line 3-Way</span>
+          <span class="row__odds">2.05</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Sweden vs Tunisia</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 2.5 · Total Goals</span>
+          <span class="row__odds">2.20</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Germany vs Curaçao</div>
+        <div class="row__detail">
+          <span class="row__pm">Kai Havertz · Anytime Scorer</span>
+          <span class="row__odds">1.53</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Canada vs Bosnia and Herzegovina</div>
+        <div class="row__detail">
+          <span class="row__pm">Draw or Bosnia · Double Chance · X2</span>
+          <span class="row__odds">1.95</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Qatar vs Switzerland</div>
+        <div class="row__detail">
+          <span class="row__pm">Switzerland -1.0 · Spread Result</span>
+          <span class="row__odds">1.66</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Brazil vs Morocco</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 2.5 · Total Goals</span>
+          <span class="row__odds">2.10</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Haiti vs Scotland</div>
+        <div class="row__detail">
+          <span class="row__pm">Scotland · Money Line 3-Way</span>
+          <span class="row__odds">1.57</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Australia vs Türkiye</div>
+        <div class="row__detail">
+          <span class="row__pm">Türkiye · Money Line 3-Way</span>
+          <span class="row__odds">1.70</span>
+        </div>
+      </article>
+        </div>
+        <div class="tab-panel panel-parlays">
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 14</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">18.44</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Germany vs Curaçao</div>
+              <div class="leg__pm">BB combo · Betbuilder (HT/FT Germany/Germany + Havertz Anytime Scorer)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.71</span>
+              <span class="leg__score">7-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Sweden vs Tunisia</div>
+              <div class="leg__pm">BB combo · Betbuilder (Both Teams to Score Yes + Over 2.5 Goals)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.42</span>
+              <span class="leg__score">5-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Ivory Coast vs Ecuador</div>
+              <div class="leg__pm">Under 2.0 · Total Goals</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.65</span>
+              <span class="leg__score">1-0</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Netherlands vs Japan</div>
+              <div class="leg__pm">Netherlands · 1st Half Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.70</span>
+              <span class="leg__score">2-2</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 18.44</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 14</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">Germany vs Curaçao <span class="chip chip--sgp">SGP</span><span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">Same Game Parlay</span>
+            <span class="row__odds row__odds--combined">11.00</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Germany vs Curaçao</div>
+              <div class="leg__pm">SGP combo · SGP (Havertz Anytime Assist + Wirtz Anytime Scorer + Over 2 Cards + Goals 3-6)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">11.00</span>
+              <span class="leg__score">7-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 11.00</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 13</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">3-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">3 legs combined</span>
+            <span class="row__odds row__odds--combined">14.16</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">USA vs Paraguay</div>
+              <div class="leg__pm">BB combo · Betbuilder (Money Line USA + Over 3 Total Cards)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">3.40</span>
+              <span class="leg__score">4-1</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Qatar vs Switzerland</div>
+              <div class="leg__pm">Switzerland -1.0 · Spread Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.66</span>
+              <span class="leg__score">1-1</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Haiti vs Scotland</div>
+              <div class="leg__pm">Scotland -1.0 · Spread Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.50</span>
+              <span class="leg__score">0-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 14.16</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 13</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">Brazil vs Morocco <span class="chip chip--sgp">SGP</span><span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">Same Game Parlay</span>
+            <span class="row__odds row__odds--combined">7.00</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Brazil vs Morocco</div>
+              <div class="leg__pm">SGP combo · SGP (Over 4 Cards + Over 7 Corners + Both Teams to Score Yes)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">7.00</span>
+              <span class="leg__score">1-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 7.00</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 12</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">20.10</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Canada vs Bosnia and Herzegovina</div>
+              <div class="leg__pm">Draw or Bosnia · Double Chance · X2</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.95</span>
+              <span class="leg__score">1-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">USA vs Paraguay</div>
+              <div class="leg__pm">Over 3.5 · Number of Cards in Match</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.83</span>
+              <span class="leg__score">4-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Brazil vs Morocco</div>
+              <div class="leg__pm">Draw or Morocco · Double Chance · 1X</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.25</span>
+              <span class="leg__score">1-1</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Haiti vs Scotland</div>
+              <div class="leg__pm">Scotland -1.0 · Spread Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.50</span>
+              <span class="leg__score">0-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 20.10</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 12</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">51.54</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">South Korea vs Czechia</div>
+              <div class="leg__pm">Czechia · Money Line 3-Way</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">3.00</span>
+              <span class="leg__score">2-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Canada vs Bosnia and Herzegovina</div>
+              <div class="leg__pm">Draw · Money Line 3-Way</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">3.60</span>
+              <span class="leg__score">1-1</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Haiti vs Scotland</div>
+              <div class="leg__pm">Scotland -1.0 · Spread Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.50</span>
+              <span class="leg__score">0-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Germany vs Curaçao</div>
+              <div class="leg__pm">Germany -1.0 · 1st Half Spread 3-Way</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.90</span>
+              <span class="leg__score">7-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 51.54</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 11</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">2-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">2 legs combined</span>
+            <span class="row__odds row__odds--combined">15.12</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Mexico vs South Africa</div>
+              <div class="leg__pm">BB combo · Betbuilder (Mexico 1-2 Goals + Over 3.5 Cards)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.75</span>
+              <span class="leg__score">2-0</span>
+            </div>
+          </div>
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">South Korea vs Czechia</div>
+              <div class="leg__pm">BB combo · Betbuilder (Over 2.5 Goals + Draw-or-Czechia + Over 7 Corners)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">5.50</span>
+              <span class="leg__score">2-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 15.12</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 11</span>
+            <span class="badge badge--lost">LOST</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">13.89</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--lost">
+            <span class="tick tick--lost" aria-label="lost">✗</span>
+            <div class="leg__body">
+              <div class="leg__match">Mexico vs South Africa</div>
+              <div class="leg__pm">Yes · Both Teams to Score</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.37</span>
+              <span class="leg__score">2-0</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">South Korea vs Czechia</div>
+              <div class="leg__pm">Yes · Both Teams to Score</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.95</span>
+              <span class="leg__score">2-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Germany vs Curaçao</div>
+              <div class="leg__pm">Germany -1.0 · 1st Half Spread 3-Way</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.90</span>
+              <span class="leg__score">7-1</span>
+            </div>
+          </div>
+          <div class="leg leg--won">
+            <span class="tick tick--won" aria-label="won">✓</span>
+            <div class="leg__body">
+              <div class="leg__match">Haiti vs Scotland</div>
+              <div class="leg__pm">Scotland · Money Line 3-Way</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.57</span>
+              <span class="leg__score">0-1</span>
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 13.89</span>
+            <span class="legs__result is-neg">−1.00u</span>
+          </div>
+        </div>
+      </details>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span class="wm"><span class="wm-royal">ROYAL</span> <span class="wm-tips">TIPS</span> <span class="wm-961">961</span></span>
+        <div class="footer__motto">No fluff. No fake wins. Just ROI.</div>
+        <div class="footer__disc">18+ · Bet responsibly. Tips are opinion, not guarantees. Past results don’t predict future outcomes.</div>
+        <div class="footer__meta">LAST UPDATED JUN 16 · 2026 · TRACKING SINCE JUN 11 · 2026</div>
+        <div class="footer__src">Generated from the placed-bets ledger · the single source of truth.</div>
+      </footer>
+    </main>
+</body>
+</html>
