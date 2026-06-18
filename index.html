@@ -113,22 +113,38 @@
       }
       .eyebrow__rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-deep), transparent); }
 
-      /* Tabbed log toggle — CSS-only, zero JS */
-      .tab-input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-      .tab-bar { display: flex; gap: 22px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
-      .tab {
-        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
-        letter-spacing: 2.5px; font-size: 15px; color: var(--muted); cursor: pointer;
-        padding: 4px 2px 11px; margin-bottom: -1px; border-bottom: 2px solid transparent;
-        transition: color .15s ease;
-      }
-      .tab:hover { color: var(--white-2); }
-      #tab-picks:checked ~ .tab-bar label[for="tab-picks"],
-      #tab-parlays:checked ~ .tab-bar label[for="tab-parlays"] { color: var(--gold-bright); border-bottom-color: var(--gold); }
-      .tab-panel { display: none; }
-      #tab-picks:checked ~ .panel-picks { display: block; }
-      #tab-parlays:checked ~ .panel-parlays { display: block; }
+      .eyebrow--sub { letter-spacing: 2px; font-size: 11px; color: var(--gold); margin-bottom: 11px; }
       .panel-empty { color: var(--muted); padding: 28px 4px; text-align: center; }
+
+      /* Weekly log — collapsible week blocks (native <details>, zero JS) */
+      .week { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 11px; overflow: hidden; }
+      .week[open] { border-color: #332d24; }
+      .week__summary { padding: 15px 16px; cursor: pointer; list-style: none; background: var(--card); }
+      .week__summary::-webkit-details-marker { display: none; }
+      .week[open] .week__summary { border-bottom: 1px solid #1a1714; }
+      .week__head { display: flex; align-items: center; gap: 9px; }
+      .week__range {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 2px; font-size: 15px; color: var(--white);
+      }
+      .week__tag {
+        font-family: 'Saira Condensed', sans-serif; font-weight: 700; letter-spacing: .8px;
+        font-size: 10px; color: var(--gold-bright); border: 1px solid var(--gold-deep);
+        border-radius: 4px; padding: 1px 7px;
+      }
+      .week .chevron { margin-left: auto; font-size: 13px; }
+      .week__stats {
+        display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px;
+        font-family: 'Saira Condensed', sans-serif; font-weight: 600;
+        letter-spacing: .8px; font-size: 12px;
+      }
+      .week__stat { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+      .week__stat-k { color: var(--gold); letter-spacing: 1.4px; }
+      .week__rec { color: var(--white); font-weight: 700; }
+      .week__dot { color: var(--gold-deep); }
+      .week__sub { color: var(--muted-2); }
+      .week__body { padding: 2px 14px 12px; }
+      .week__group { margin-top: 14px; }
 
       .row {
         background: var(--card); border: 1px solid var(--border); border-radius: 11px;
@@ -263,13 +279,22 @@
         <p class="card__note">High-variance long shots — tracked separately so they never flatter or distort the picks record.</p>
       </section>
       <section class="log">
-        <input type="radio" name="logtab" id="tab-picks" class="tab-input" checked>
-        <input type="radio" name="logtab" id="tab-parlays" class="tab-input">
-        <div class="tab-bar" role="tablist">
-          <label class="tab" for="tab-picks">Picks</label>
-          <label class="tab" for="tab-parlays">Parlays</label>
-        </div>
-        <div class="tab-panel panel-picks">
+        <div class="eyebrow">Weekly Log <span class="eyebrow__rule"></span></div>
+      <details class="week" open>
+        <summary class="week__summary">
+          <div class="week__head">
+            <span class="week__range">Jun 15 – 21</span>
+            <span class="week__tag">This week</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="week__stats">
+            <span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">7–5</span><span class="week__dot">·</span><span class="week__sub">58.3%</span><span class="week__dot">·</span><span class="week__sub is-pos">+0.31u</span></span>
+            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–2</span><span class="week__dot">·</span><span class="week__sub is-neg">−2.00u</span></span>
+          </div>
+        </summary>
+        <div class="week__body">
+          <div class="week__group">
+            <div class="eyebrow eyebrow--sub">Picks <span class="eyebrow__rule"></span></div>
 
       <article class="row row--pick">
         <div class="row__top">
@@ -406,18 +431,6 @@
       <article class="row row--pick">
         <div class="row__top">
           <span class="row__date">JUN 14</span>
-          <span class="badge badge--lost">LOST</span>
-        </div>
-        <div class="row__match">Netherlands vs Japan</div>
-        <div class="row__detail">
-          <span class="row__pm">Netherlands · Money Line 3-Way</span>
-          <span class="row__odds">2.05</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 14</span>
           <span class="badge badge--won">WON</span>
         </div>
         <div class="row__match">Sweden vs Tunisia</div>
@@ -426,80 +439,9 @@
           <span class="row__odds">2.20</span>
         </div>
       </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 14</span>
-          <span class="badge badge--won">WON</span>
-        </div>
-        <div class="row__match">Germany vs Curaçao</div>
-        <div class="row__detail">
-          <span class="row__pm">Kai Havertz · Anytime Scorer</span>
-          <span class="row__odds">1.53</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 12</span>
-          <span class="badge badge--won">WON</span>
-        </div>
-        <div class="row__match">Canada vs Bosnia and Herzegovina</div>
-        <div class="row__detail">
-          <span class="row__pm">Draw or Bosnia · Double Chance · X2</span>
-          <span class="row__odds">1.95</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 12</span>
-          <span class="badge badge--lost">LOST</span>
-        </div>
-        <div class="row__match">Qatar vs Switzerland</div>
-        <div class="row__detail">
-          <span class="row__pm">Switzerland -1.0 · Spread Result</span>
-          <span class="row__odds">1.66</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 12</span>
-          <span class="badge badge--lost">LOST</span>
-        </div>
-        <div class="row__match">Brazil vs Morocco</div>
-        <div class="row__detail">
-          <span class="row__pm">Over 2.5 · Total Goals</span>
-          <span class="row__odds">2.10</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 12</span>
-          <span class="badge badge--won">WON</span>
-        </div>
-        <div class="row__match">Haiti vs Scotland</div>
-        <div class="row__detail">
-          <span class="row__pm">Scotland · Money Line 3-Way</span>
-          <span class="row__odds">1.57</span>
-        </div>
-      </article>
-
-      <article class="row row--pick">
-        <div class="row__top">
-          <span class="row__date">JUN 12</span>
-          <span class="badge badge--lost">LOST</span>
-        </div>
-        <div class="row__match">Australia vs Türkiye</div>
-        <div class="row__detail">
-          <span class="row__pm">Türkiye · Money Line 3-Way</span>
-          <span class="row__odds">1.70</span>
-        </div>
-      </article>
-        </div>
-        <div class="tab-panel panel-parlays">
+          </div>
+          <div class="week__group">
+            <div class="eyebrow eyebrow--sub">Parlays <span class="eyebrow__rule"></span></div>
 
       <details class="row row--parlay">
         <summary class="row__summary">
@@ -636,6 +578,111 @@
           </div>
         </div>
       </details>
+          </div>
+        </div>
+      </details>
+      <details class="week">
+        <summary class="week__summary">
+          <div class="week__head">
+            <span class="week__range">Jun 8 – 14</span>
+            
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="week__stats">
+            <span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">3–4</span><span class="week__dot">·</span><span class="week__sub">42.9%</span><span class="week__dot">·</span><span class="week__sub is-neg">−1.95u</span></span>
+            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–7</span><span class="week__dot">·</span><span class="week__sub is-neg">−7.00u</span></span>
+          </div>
+        </summary>
+        <div class="week__body">
+          <div class="week__group">
+            <div class="eyebrow eyebrow--sub">Picks <span class="eyebrow__rule"></span></div>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Netherlands vs Japan</div>
+        <div class="row__detail">
+          <span class="row__pm">Netherlands · Money Line 3-Way</span>
+          <span class="row__odds">2.05</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 14</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Germany vs Curaçao</div>
+        <div class="row__detail">
+          <span class="row__pm">Kai Havertz · Anytime Scorer</span>
+          <span class="row__odds">1.53</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Canada vs Bosnia and Herzegovina</div>
+        <div class="row__detail">
+          <span class="row__pm">Draw or Bosnia · Double Chance · X2</span>
+          <span class="row__odds">1.95</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Qatar vs Switzerland</div>
+        <div class="row__detail">
+          <span class="row__pm">Switzerland -1.0 · Spread Result</span>
+          <span class="row__odds">1.66</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Brazil vs Morocco</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 2.5 · Total Goals</span>
+          <span class="row__odds">2.10</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--won">WON</span>
+        </div>
+        <div class="row__match">Haiti vs Scotland</div>
+        <div class="row__detail">
+          <span class="row__pm">Scotland · Money Line 3-Way</span>
+          <span class="row__odds">1.57</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 12</span>
+          <span class="badge badge--lost">LOST</span>
+        </div>
+        <div class="row__match">Australia vs Türkiye</div>
+        <div class="row__detail">
+          <span class="row__pm">Türkiye · Money Line 3-Way</span>
+          <span class="row__odds">1.70</span>
+        </div>
+      </article>
+          </div>
+          <div class="week__group">
+            <div class="eyebrow eyebrow--sub">Parlays <span class="eyebrow__rule"></span></div>
 
       <details class="row row--parlay">
         <summary class="row__summary">
@@ -1013,7 +1060,9 @@
           </div>
         </div>
       </details>
+          </div>
         </div>
+      </details>
       </section>
 
       <footer class="footer">
