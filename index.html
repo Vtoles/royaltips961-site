@@ -113,7 +113,6 @@
       }
       .eyebrow__rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-deep), transparent); }
 
-      .eyebrow--sub { letter-spacing: 2px; font-size: 11px; color: var(--gold); margin-bottom: 11px; }
       .panel-empty { color: var(--muted); padding: 28px 4px; text-align: center; }
 
       /* Weekly log — collapsible week blocks (native <details>, zero JS) */
@@ -143,8 +142,7 @@
       .week__rec { color: var(--white); font-weight: 700; }
       .week__dot { color: var(--gold-deep); }
       .week__sub { color: var(--muted-2); }
-      .week__body { padding: 2px 14px 12px; }
-      .week__group { margin-top: 14px; }
+      .week__body { padding: 10px 14px 14px; }
 
       .row {
         background: var(--card); border: 1px solid var(--border); border-radius: 11px;
@@ -190,7 +188,7 @@
       }
       .chip--sgp { color: var(--gold-bright); border-color: var(--gold); }
       .chevron { color: var(--gold); font-size: 14px; transition: transform .2s ease; }
-      details[open] .chevron { transform: rotate(180deg); }
+      details[open] > summary .chevron { transform: rotate(180deg); }
 
       .legs { padding: 0 15px 13px; border-top: 1px solid #1a1714; }
       .leg { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0; border-bottom: 1px solid #161310; }
@@ -230,6 +228,44 @@
         font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase;
         letter-spacing: 1.5px; font-size: 11px; padding: 8px 12px; margin: 0 -14px 0;
       }
+
+      /* ── Period dashboard ── */
+      .period { background: linear-gradient(180deg, #11100c, var(--card)); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 16px; padding: 22px 20px 20px; margin-top: 18px; text-align: center; }
+      .period__eyebrow { font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 11px; color: var(--muted); }
+      .period__name { font-family: 'Archivo Black', sans-serif; font-style: italic; font-size: 32px; line-height: 1.04; color: var(--white); margin-top: 7px; letter-spacing: -.5px; text-transform: uppercase; }
+      .period__span { font-family: 'Saira Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.4px; font-size: 11.5px; color: var(--gold); margin-top: 8px; }
+      .period__headline { margin-top: 15px; padding-top: 14px; border-top: 1px solid #1a1714; }
+      .period__headline span { font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1; }
+      .period__headline small { display: block; font-family: 'Saira Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.4px; font-size: 10px; color: var(--muted); margin-top: 5px; }
+      .period-note { font-size: 11px; color: var(--muted-2); text-align: center; margin: 13px 6px 2px; line-height: 1.55; }
+      /* ── Closable Picks / Parlays drawers ── */
+      .drawer { border: 1px solid var(--border); border-radius: 10px; margin-top: 10px; overflow: hidden; background: var(--card); }
+      .drawer:first-child { margin-top: 0; }
+      .drawer[open] { border-color: #332d24; }
+      .drawer[open] .drawer__summary { border-bottom: 1px solid #1a1714; }
+      .drawer__summary { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; list-style: none; }
+      .drawer__summary::-webkit-details-marker { display: none; }
+      .drawer__k { font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; font-size: 13px; color: var(--gold); }
+      .drawer--parlays .drawer__k { color: var(--muted); }
+      .drawer__stat { font-family: 'Saira Condensed', sans-serif; font-weight: 600; letter-spacing: .8px; font-size: 12.5px; color: var(--muted-2); display: inline-flex; align-items: baseline; gap: 6px; }
+      .drawer__stat i { color: var(--gold-deep); font-style: normal; }
+      .drawer__stat b { font-weight: 700; }
+      .drawer .chevron { margin-left: auto; font-size: 13px; }
+      .drawer__body { padding: 12px 12px 6px; }
+      .drawer__body .row:last-child { margin-bottom: 6px; }
+      /* ── Past-periods archive ── */
+      .archive { margin-top: 26px; }
+      .archive__empty { color: var(--muted); font-size: 12px; line-height: 1.65; padding: 18px 14px; border: 1px dashed var(--border); border-radius: 12px; text-align: center; }
+      .archive-period { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 11px; overflow: hidden; }
+      .archive-period__summary { display: flex; align-items: center; gap: 10px; padding: 15px 16px; cursor: pointer; list-style: none; background: var(--card); }
+      .archive-period__summary::-webkit-details-marker { display: none; }
+      .archive-period__name { font-family: 'Saira Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; font-size: 14px; color: var(--white); }
+      .archive-period__stat { font-family: 'Saira Condensed', sans-serif; font-weight: 600; letter-spacing: .6px; font-size: 11.5px; color: var(--muted-2); }
+      .archive-period__stat i { color: var(--gold-deep); font-style: normal; }
+      .archive-period__body { padding: 12px 14px 8px; border-top: 1px solid #1a1714; }
+      /* ── All-time strip ── */
+      .alltime { margin-top: 24px; text-align: center; font-family: 'Saira Condensed', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.1px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+      .alltime b { color: var(--white-2); }
     </style>
 </head>
 <body>
@@ -242,6 +278,12 @@
         <div class="header__meta">LAST UPDATED JUN 27 · 2026 · TRACKING SINCE JUN 11 · 2026</div>
       </header>
 
+      <section class="period">
+        <div class="period__eyebrow">CURRENT PERIOD · TOURNAMENT</div>
+        <div class="period__name">World Cup 2026</div>
+        <div class="period__span">Jun 8 – Jul 19 · Day 20 of 42</div>
+        <div class="period__headline"><span class="is-neg">−14.77u</span><small>combined net this period</small></div>
+      </section>
 
       <section class="card card--picks">
         <div class="card__eyebrow"><span class="card__tier">PICKS</span><span class="card__tier-meta">PRIMARY · 53 SETTLED</span></div>
@@ -278,23 +320,83 @@
         </div>
         <p class="card__note">High-variance long shots — tracked separately so they never flatter or distort the picks record.</p>
       </section>
+      <p class="period-note">Dashboard resets on the 1st of each month. The World Cup is tracked as one continuous period (Jun 8 – Jul 19) and won’t reset until it ends.</p>
+
       <section class="log">
         <div class="eyebrow">Weekly Log <span class="eyebrow__rule"></span></div>
-      <details class="week" open>
+      <details class="week">
         <summary class="week__summary">
-          <div class="week__head">
-            <span class="week__range">Jun 22 – 28</span>
-            <span class="week__tag">This week</span>
-            <span class="chevron" aria-hidden="true">▾</span>
-          </div>
-          <div class="week__stats">
-            <span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">13–8</span><span class="week__dot">·</span><span class="week__sub">61.9%</span><span class="week__dot">·</span><span class="week__sub is-pos">+0.97u</span></span>
-            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–9</span><span class="week__dot">·</span><span class="week__sub is-neg">−9.00u</span></span>
-          </div>
+          <div class="week__head"><span class="week__range">Jun 22 – 28</span><span class="week__tag">This week</span><span class="chevron" aria-hidden="true">▾</span></div>
+          <div class="week__stats"><span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">13–8</span><span class="week__dot">·</span><span class="week__sub is-pos">+0.97u</span></span>
+            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–9</span><span class="week__dot">·</span><span class="week__sub is-neg">−9.00u</span></span></div>
         </summary>
         <div class="week__body">
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Picks <span class="eyebrow__rule"></span></div>
+        <details class="drawer drawer--picks">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Picks</span>
+            <span class="drawer__stat">13–8<i>·</i>61.9%<i>·</i><b class="is-pos">+0.97u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 27</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Colombia vs Portugal</div>
+        <div class="row__detail">
+          <span class="row__pm">Yes · Both Teams to Score</span>
+          <span class="row__odds">1.67</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 27</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Colombia vs Portugal</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 8.5 · Total Corners</span>
+          <span class="row__odds">1.72</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 27</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Algeria vs Austria</div>
+        <div class="row__detail">
+          <span class="row__pm">Under 7.5 · Shots on Target</span>
+          <span class="row__odds">1.57</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 27</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Panama vs England</div>
+        <div class="row__detail">
+          <span class="row__pm">England -1.5 · Asian Spread</span>
+          <span class="row__odds">1.47</span>
+        </div>
+      </article>
+
+      <article class="row row--pick">
+        <div class="row__top">
+          <span class="row__date">JUN 27</span>
+          <span class="badge badge--pending">PENDING</span>
+        </div>
+        <div class="row__match">Croatia vs Ghana</div>
+        <div class="row__detail">
+          <span class="row__pm">Over 8.5 · Total Corners</span>
+          <span class="row__odds">1.90</span>
+        </div>
+      </article>
 
       <article class="row row--pick">
         <div class="row__top">
@@ -548,8 +650,149 @@
         </div>
       </article>
           </div>
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Parlays <span class="eyebrow__rule"></span></div>
+        </details>
+        <details class="drawer drawer--parlays">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Parlays</span>
+            <span class="drawer__stat">0–9<i>·</i><b class="is-neg">−9.00u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 27</span>
+            <span class="badge badge--pending">PENDING</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">12.03</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Panama vs England</div>
+              <div class="leg__pm">England -2.5 · Asian Spread</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.20</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Colombia vs Portugal</div>
+              <div class="leg__pm">Yes · Both Teams to Score</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.66</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Algeria vs Austria</div>
+              <div class="leg__pm">Draw · 1st Half Result</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.80</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Jordan vs Argentina</div>
+              <div class="leg__pm">Julian Alvarez · Anytime Scorer</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.83</span>
+              
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 12.03</span>
+            <span class="legs__result is-flat">0u</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="row row--parlay">
+        <summary class="row__summary">
+          <div class="row__top">
+            <span class="row__date">JUN 27</span>
+            <span class="badge badge--pending">PENDING</span>
+          </div>
+          <div class="row__match row__match--parlay">
+            <span class="row__label">4-LEG PARLAY <span class="chip">World Cup</span></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="row__detail">
+            <span class="row__pm">4 legs combined</span>
+            <span class="row__odds row__odds--combined">12.50</span>
+          </div>
+        </summary>
+        <div class="legs">
+          
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Colombia vs Portugal</div>
+              <div class="leg__pm">BB combo · Betbuilder (BTTS Yes + Total Corners Over 8.5)</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">2.85</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Algeria vs Austria</div>
+              <div class="leg__pm">Under 7.5 · Shots on Target</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.57</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Panama vs England</div>
+              <div class="leg__pm">England -1.5 · Asian Spread</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.47</span>
+              
+            </div>
+          </div>
+          <div class="leg leg--pending">
+            <span class="tick tick--pending" aria-label="pending">·</span>
+            <div class="leg__body">
+              <div class="leg__match">Croatia vs Ghana</div>
+              <div class="leg__pm">Over 8.5 · Total Corners</div>
+            </div>
+            <div class="leg__right">
+              <span class="leg__odds">1.90</span>
+              
+            </div>
+          </div>
+          <div class="legs__footer">
+            <span class="legs__combined">COMBINED 12.50</span>
+            <span class="legs__result is-flat">0u</span>
+          </div>
+        </div>
+      </details>
 
       <details class="row row--parlay">
         <summary class="row__summary">
@@ -1130,24 +1373,23 @@
         </div>
       </details>
           </div>
+        </details>
         </div>
       </details>
       <details class="week">
         <summary class="week__summary">
-          <div class="week__head">
-            <span class="week__range">Jun 15 – 21</span>
-            
-            <span class="chevron" aria-hidden="true">▾</span>
-          </div>
-          <div class="week__stats">
-            <span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">14–11</span><span class="week__dot">·</span><span class="week__sub">56.0%</span><span class="week__dot">·</span><span class="week__sub is-neg">−0.72u</span></span>
-            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">1–8</span><span class="week__dot">·</span><span class="week__sub is-pos">+2.93u</span></span>
-          </div>
+          <div class="week__head"><span class="week__range">Jun 15 – 21</span><span class="chevron" aria-hidden="true">▾</span></div>
+          <div class="week__stats"><span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">14–11</span><span class="week__dot">·</span><span class="week__sub is-neg">−0.72u</span></span>
+            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">1–8</span><span class="week__dot">·</span><span class="week__sub is-pos">+2.93u</span></span></div>
         </summary>
         <div class="week__body">
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Picks <span class="eyebrow__rule"></span></div>
-
+        <details class="drawer drawer--picks">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Picks</span>
+            <span class="drawer__stat">14–11<i>·</i>56.0%<i>·</i><b class="is-neg">−0.72u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
       <article class="row row--pick">
         <div class="row__top">
           <span class="row__date">JUN 21</span>
@@ -1448,9 +1690,14 @@
         </div>
       </article>
           </div>
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Parlays <span class="eyebrow__rule"></span></div>
-
+        </details>
+        <details class="drawer drawer--parlays">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Parlays</span>
+            <span class="drawer__stat">1–8<i>·</i><b class="is-pos">+2.93u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
       <details class="row row--parlay">
         <summary class="row__summary">
           <div class="row__top">
@@ -1975,24 +2222,23 @@
         </div>
       </details>
           </div>
+        </details>
         </div>
       </details>
       <details class="week">
         <summary class="week__summary">
-          <div class="week__head">
-            <span class="week__range">Jun 8 – 14</span>
-            
-            <span class="chevron" aria-hidden="true">▾</span>
-          </div>
-          <div class="week__stats">
-            <span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">3–4</span><span class="week__dot">·</span><span class="week__sub">42.9%</span><span class="week__dot">·</span><span class="week__sub is-neg">−1.95u</span></span>
-            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–7</span><span class="week__dot">·</span><span class="week__sub is-neg">−7.00u</span></span>
-          </div>
+          <div class="week__head"><span class="week__range">Jun 8 – 14</span><span class="chevron" aria-hidden="true">▾</span></div>
+          <div class="week__stats"><span class="week__stat"><span class="week__stat-k">PICKS</span> <span class="week__rec">3–4</span><span class="week__dot">·</span><span class="week__sub is-neg">−1.95u</span></span>
+            <span class="week__stat"><span class="week__stat-k">PARLAYS</span> <span class="week__rec">0–7</span><span class="week__dot">·</span><span class="week__sub is-neg">−7.00u</span></span></div>
         </summary>
         <div class="week__body">
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Picks <span class="eyebrow__rule"></span></div>
-
+        <details class="drawer drawer--picks">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Picks</span>
+            <span class="drawer__stat">3–4<i>·</i>42.9%<i>·</i><b class="is-neg">−1.95u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
       <article class="row row--pick">
         <div class="row__top">
           <span class="row__date">JUN 14</span>
@@ -2077,9 +2323,14 @@
         </div>
       </article>
           </div>
-          <div class="week__group">
-            <div class="eyebrow eyebrow--sub">Parlays <span class="eyebrow__rule"></span></div>
-
+        </details>
+        <details class="drawer drawer--parlays">
+          <summary class="drawer__summary">
+            <span class="drawer__k">Parlays</span>
+            <span class="drawer__stat">0–7<i>·</i><b class="is-neg">−7.00u</b></span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="drawer__body">
       <details class="row row--parlay">
         <summary class="row__summary">
           <div class="row__top">
@@ -2457,9 +2708,17 @@
         </div>
       </details>
           </div>
+        </details>
         </div>
       </details>
       </section>
+
+      <section class="archive">
+        <div class="eyebrow">Past Periods <span class="eyebrow__rule"></span></div>
+        <p class="archive__empty">Nothing archived yet — the current period (World Cup 2026) is the first.<br>When it ends, it moves here and the dashboard starts fresh for the new month.</p>
+      </section>
+
+      <div class="alltime">All-time · <b>Picks 30–23</b> (56.6%, −1.70u) · <b>Parlays 1–24</b> (−13.07u)</div>
 
       <footer class="footer">
         <span class="wm"><span class="wm-royal">ROYAL</span> <span class="wm-tips">TIPS</span> <span class="wm-961">961</span></span>
